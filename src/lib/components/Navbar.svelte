@@ -1,78 +1,49 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
-	import {
-		onDestroy,
-		onMount
-	} from 'svelte'
-	import {
-		fade,
-		fly
-	} from 'svelte/transition'
-	let showMobileNavbar =
-			false,
-		showNavbarStyle =
-			false,
-		showNavbar =
-			true,
+	import { onDestroy, onMount } from 'svelte'
+	import { fade, fly } from 'svelte/transition'
+	import { theme } from '../../store'
+	let showMobileNavbar = false,
+		showNavbarStyle = false,
+		showNavbar = true,
 		lastScrollTop = 0
-	const handleToggleMobileNavbar =
-		() => {
-			showMobileNavbar =
-				!showMobileNavbar
+	const handleToggleMobileNavbar = () => {
+		showMobileNavbar = !showMobileNavbar
+	}
+	const handleScroll = () => {
+		let screenViewHeight = Math.round(window.innerHeight / 100) * 100
+		var st = window.pageYOffset || document.documentElement.scrollTop
+		if (st > lastScrollTop && window.pageYOffset > screenViewHeight) {
+			showNavbar = false
+		} else {
+			showNavbar = true
 		}
-	const handleScroll =
-		() => {
-			let screenViewHeight =
-				Math.round(
-					window.innerHeight /
-						100
-				) * 100
-			var st =
-				window.pageYOffset ||
-				document
-					.documentElement
-					.scrollTop
-			if (
-				st >
-					lastScrollTop &&
-				window.pageYOffset >
-					screenViewHeight
-			) {
-				showNavbar =
-					false
-			} else {
-				showNavbar =
-					true
-			}
-			if (
-				window.pageYOffset >
-				screenViewHeight
-			) {
-				showNavbarStyle =
-					true
-			} else {
-				showNavbarStyle =
-					false
-			}
-			lastScrollTop =
-				st <= 0
-					? 0
-					: st
+		if (window.pageYOffset > screenViewHeight) {
+			showNavbarStyle = true
+		} else {
+			showNavbarStyle = false
 		}
+		lastScrollTop = st <= 0 ? 0 : st
+	}
+	const handleToggleTheme = () => {
+		let root = document.getElementsByTagName('html')[0]
+		if ($theme === 'light') {
+			$theme = 'dark'
+			root.classList.add('dark')
+		} else {
+			$theme = 'light'
+			root.classList.remove('dark')
+		}
+		localStorage.setItem('theme', $theme)
+	}
 	onMount(() => {
 		if (browser) {
-			window.addEventListener(
-				'scroll',
-				handleScroll
-			)
+			window.addEventListener('scroll', handleScroll)
 		}
 	})
 	onDestroy(() => {
 		if (browser) {
-			window.removeEventListener(
-				'scroll',
-				handleScroll
-			)
+			window.removeEventListener('scroll', handleScroll)
 		}
 	})
 </script>
@@ -83,64 +54,81 @@
 			y: -100
 		}}
 		class={`fixed z-40 top-0 w-full  border-black transition-all duration-300 ${
-			showNavbarStyle
-				? 'border-b bg-background'
-				: ''
+			showNavbarStyle ? 'border-b bg-background' : ''
 		}`}
 	>
 		<nav
 			class={` flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto inset-x-0  p-4 `}
 		>
-			<div
-				class="flex items-center justify-between w-full"
-			>
+			<div class="flex items-center justify-between w-full">
 				<a href="/">
-					<h1
-						class="text-xl font-bold"
-					>
-						Logo
-					</h1>
+					<h1 class="text-xl font-bold">Logo</h1>
 				</a>
 
-				<button
-					class="block md:hidden"
-					on:click={handleToggleMobileNavbar}
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-6 h-6"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-						/>
-					</svg>
-				</button>
+				<div class="flex items-center gap-4">
+					<ul class="hidden space-x-6 md:flex">
+						<li>
+							<a href="/">Home</a>
+						</li>
+						<li>
+							<a href="/about">About</a>
+						</li>
+					</ul>
+					<button on:click={handleToggleTheme} class="pointer-events-auto">
+						{#if $theme === 'light'}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+								class="w-6 h-6"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+								/>
+							</svg>
+						{:else}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+								class="w-5 h-5"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+								/>
+							</svg>
+						{/if}
+					</button>
 
-				<ul
-					class="hidden space-x-6 md:flex"
-				>
-					<li>
-						<a
-							href="/"
-							>Home</a
+					<button class="block md:hidden" on:click={handleToggleMobileNavbar}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
 						>
-					</li>
-					<li>
-						<a
-							href="/about"
-							>About</a
-						>
-					</li>
-				</ul>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+							/>
+						</svg>
+					</button>
+				</div>
 			</div>
 
 			{#if showMobileNavbar}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					in:fade
 					class="fixed inset-0 z-50 bg-black/60"
@@ -151,9 +139,7 @@
 							x: 200
 						}}
 						class={`absolute right-0 w-1/2 inset-y-0 bg-black p-4 flex flex-col justify-center items-center text-white transition-all duration-300 ${
-							!showMobileNavbar
-								? 'translate-x-full'
-								: ' translate-x-0'
+							!showMobileNavbar ? 'translate-x-full' : ' translate-x-0'
 						}`}
 					>
 						<button
@@ -176,20 +162,12 @@
 							</svg>
 						</button>
 
-						<ul
-							class="w-full space-y-2 text-right"
-						>
+						<ul class="w-full space-y-2 text-right">
 							<li>
-								<a
-									href="/"
-									>Home</a
-								>
+								<a href="/">Home</a>
 							</li>
 							<li>
-								<a
-									href="/about"
-									>About</a
-								>
+								<a href="/about">About</a>
 							</li>
 						</ul>
 					</div>

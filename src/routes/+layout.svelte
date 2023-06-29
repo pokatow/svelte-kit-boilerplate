@@ -1,13 +1,15 @@
 <script lang="ts">
-	import Footer from '$lib/components/Footer.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
-	import '../app.css';
-	import 'iconify-icon';
+	import Footer from '$lib/components/Footer.svelte'
+	import Navbar from '$lib/components/Navbar.svelte'
+	import '../app.css'
+	import 'iconify-icon'
 </script>
 
 <Navbar />
 
-<main class="flex flex-col items-center justify-center min-h-screen">
+<main
+	class="flex flex-col items-center justify-center min-h-screen bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+>
 	<slot />
 	<!-- {#if preloadDone}
 		
