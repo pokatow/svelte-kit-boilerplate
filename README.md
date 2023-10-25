@@ -1,1 +1,4 @@
-# Svelte Kit Boilerplate by Pokatow
+## Stack
+
+- 📦 [Svelte Kit](https://kit.svelte.dev/)
+- 🎨 [Tailwind CSS](https://tailwindcss.com/)
