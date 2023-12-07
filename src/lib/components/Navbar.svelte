@@ -3,6 +3,7 @@
 	import { onDestroy, onMount } from 'svelte'
 	import { fade, fly } from 'svelte/transition'
 	import { theme } from '$lib/stores/store'
+	import IconAccount from '~icons/mdi/account'
 
 	let showMobileNavbar = false,
 		showNavbarStyle = false,
@@ -64,8 +65,7 @@
 			class={` flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto inset-x-0  p-4 `}
 		>
 			<div class="flex items-center justify-between w-full">
-				<a href="/"> Logo </a>
-
+				<a href="/">Logo </a>
 				<div class="flex items-center gap-4">
 					<ul class="hidden space-x-6 md:flex">
 						<li>
