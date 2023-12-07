@@ -2,14 +2,17 @@
 	import { browser } from '$app/environment'
 	import { onDestroy, onMount } from 'svelte'
 	import { fade, fly } from 'svelte/transition'
-	import { theme } from '../../store'
+	import { theme } from '$lib/stores/store'
+
 	let showMobileNavbar = false,
 		showNavbarStyle = false,
 		showNavbar = true,
 		lastScrollTop = 0
+
 	const handleToggleMobileNavbar = () => {
 		showMobileNavbar = !showMobileNavbar
 	}
+
 	const handleScroll = () => {
 		let screenViewHeight = Math.round(window.innerHeight / 100) * 100
 		var st = window.pageYOffset || document.documentElement.scrollTop
@@ -54,16 +57,14 @@
 			y: -100
 		}}
 		class={`fixed z-40 top-0 w-full  border-black transition-all duration-300 ${
-			showNavbarStyle ? 'border-b bg-background' : ''
+			showNavbarStyle ? 'border-b bg-white' : ''
 		}`}
 	>
 		<nav
 			class={` flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto inset-x-0  p-4 `}
 		>
 			<div class="flex items-center justify-between w-full">
-				<a href="/">
-					<h1 class="text-xl font-bold">Logo</h1>
-				</a>
+				<a href="/"> Logo </a>
 
 				<div class="flex items-center gap-4">
 					<ul class="hidden space-x-6 md:flex">
