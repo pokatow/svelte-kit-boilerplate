@@ -29,7 +29,7 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
 		class="fixed inset-0 z-20 flex flex-col justify-center p-6 bg-black/10 backdrop-blur"
-		transition:fade|local
+		transition:fade
 		on:click={handleToggleModal}
 	>
 		<slot {handleToggleModal} />

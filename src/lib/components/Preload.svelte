@@ -35,7 +35,7 @@
 
 {#if !done}
 	<div
-		transition:fade|local
+		transition:fade
 		class="fixed inset-0 z-50 flex flex-col items-center justify-center text-2xl text-center text-white bg-black"
 	>
 		<!-- <div

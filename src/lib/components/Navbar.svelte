@@ -54,7 +54,7 @@
 
 {#if showNavbar}
 	<div
-		in:fly={{
+		in:fly|global={{
 			y: -100
 		}}
 		class={`fixed z-40 top-0 w-full  border-black transition-all duration-300 ${
@@ -131,12 +131,12 @@
 			{#if showMobileNavbar}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
-					in:fade
+					in:fade|global
 					class="fixed inset-0 z-50 bg-black/60"
 					on:click|self={handleToggleMobileNavbar}
 				>
 					<div
-						in:fly={{
+						in:fly|global={{
 							x: 200
 						}}
 						class={`absolute right-0 w-1/2 inset-y-0 bg-black p-4 flex flex-col justify-center items-center text-white transition-all duration-300 ${
