@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Marquee from '$lib/components/Marquee.svelte'
 	import Seo from '$lib/components/Seo.svelte'
-	let counter = [1, 2, 3, 4]
+	let works = [1, 2, 3, 4]
+	let counter = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 </script>
 
 <Seo title={`Sherwin Variancia`} description={``} />
@@ -14,11 +15,11 @@
 		<div class=" text-[.5rem] font-mono">01</div>
 	</div>
 
-	<img
+	<!-- <img
 		src="/images/golden-ratio.png"
 		alt="Golden Ratio"
 		class="absolute z-10 translate-x-1/2 translate-y-1/2 right-1/2 bottom-1/2"
-	/>
+	/> -->
 	<div class="relative flex flex-col items-center w-full gap-8 text-[8rem]">
 		<div class="pr-[16rem] z-10">DESIGN</div>
 		<div class="pl-[16rem] z-0">DEVELOP</div>
@@ -58,31 +59,30 @@
 		</div>
 	</div>
 	<div class="flex flex-col border-b border-black divide-y divide-black">
-		{#each counter as x}
+		{#each works as x}
 			<a
 				href="/"
-				class="flex items-center gap-4 p-2 transition-all duration-300 hover:bg-black hover:text-white"
+				class="flex items-center gap-4 p-4 transition-all duration-300 cursor-not-allowed hover:bg-black hover:text-white"
 			>
-				<div class="text-7xl">0{x}</div>
-				<div class="w-1/3 text-xs">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa dolore
-					voluptatem mollitia fuga vitae quo minima blanditiis rerum alias quis
-				</div>
+				<div class="text-5xl">0{x}</div>
+				<div class="w-1/3 text-base">[REDACTED]</div>
 			</a>
 		{/each}
 		<div class="relative flex justify-between">
 			<div
-				class="flex items-center flex-1 overflow-x-hidden border-r border-black"
+				class="flex items-center flex-1 overflow-x-hidden font-mono uppercase border-r border-black"
 			>
 				<Marquee>
 					{#each counter as x}
-						<div class="px-8">Research Develop Deploy</div>
+						<div class="px-2">[Research]</div>
+						<div class="px-2">[Develop]</div>
+						<div class="px-2">[Deploy]</div>
 					{/each}
 				</Marquee>
 			</div>
 			<a
 				href="/works"
-				class="flex items-center justify-center w-32 gap-1 p-2 transition-all duration-300 hover:bg-black hover:text-white"
+				class="flex items-center justify-center w-32 gap-1 p-2 mr-2 transition-all duration-300 hover:bg-black hover:text-white"
 			>
 				<span class="text-base font-medium">MORE</span>
 				<svg
@@ -106,7 +106,7 @@
 
 <div class="flex flex-col w-full divide-y divide-black">
 	<div class="flex divide-x divide-black">
-		<div class="w-1/3 p-2">x</div>
+		<div class="w-1/3 p-2">X</div>
 		<a
 			href="https://twitter.com/winchia"
 			target="_blank"
@@ -115,7 +115,7 @@
 		>
 	</div>
 	<div class="flex divide-x divide-black">
-		<div class="w-1/3 p-2">instagram</div>
+		<div class="w-1/3 p-2">Instagram</div>
 		<a
 			href="https://instagram.com/sherwinchia"
 			target="_blank"
@@ -124,7 +124,7 @@
 		>
 	</div>
 	<div class="flex divide-x divide-black">
-		<div class="w-1/3 p-2">mail</div>
+		<div class="w-1/3 p-2">Mail</div>
 		<a
 			href="mailto:sherwinchiaa@gmail.com"
 			class="w-2/3 p-2 pr-8 text-right transition-all duration-300 hover:bg-black hover:text-white"

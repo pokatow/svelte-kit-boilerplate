@@ -60,7 +60,7 @@
 			<div class="flex flex-col mt-auto">
 				<div class="p-2 border-black border-y" />
 				<div class="flex flex-col p-2">
-					<div class="pb-2 text-xs font-medium">Me</div>
+					<div class="pb-1 text-xs font-medium uppercase">About</div>
 					<p class="text-[.7rem] w-4/5">
 						Software engineer with a strong passion for both design and coding.
 						I specialize in creating visually stunning and functional websites
