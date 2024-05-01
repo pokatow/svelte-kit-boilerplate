@@ -53,14 +53,14 @@
 	<div class="flex w-full h-full border border-black">
 		<div class="flex flex-col w-64 border-r border-black">
 			<div class="flex flex-col gap-2 p-2 text-sm pointer-events-auto">
-				<a href="/">HOME</a>
-				<a href="/works">WORKS</a>
-				<a href="/profile">PROFILE</a>
+				<a href="/" class="">HOME</a>
+				<a href="/works" class="">WORKS</a>
+				<a href="/profile" class="">PROFILE</a>
 			</div>
 			<div class="flex flex-col mt-auto">
 				<div class="p-2 border-black border-y" />
 				<div class="flex flex-col p-2">
-					<div class="pb-2 text-xs font-medium">Sherwin Variancia</div>
+					<div class="pb-2 text-xs font-medium">Me</div>
 					<p class="text-[.7rem] w-4/5">
 						Software engineer with a strong passion for both design and coding.
 						I specialize in creating visually stunning and functional websites

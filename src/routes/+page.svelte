@@ -59,37 +59,39 @@
 	</div>
 	<div class="flex flex-col border-b border-black divide-y divide-black">
 		{#each counter as x}
-			<div class="flex gap-4 p-2">
+			<a
+				href="/"
+				class="flex items-center gap-4 p-2 transition-all duration-300 hover:bg-black hover:text-white"
+			>
 				<div class="text-7xl">0{x}</div>
 				<div class="w-1/3 text-xs">
 					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa dolore
 					voluptatem mollitia fuga vitae quo minima blanditiis rerum alias quis
 				</div>
-			</div>
+			</a>
 		{/each}
-		<div class="relative flex gap-4">
+		<div class="relative flex justify-between">
 			<div
-				class="flex items-center w-full overflow-x-hidden border-r border-black"
+				class="flex items-center flex-1 overflow-x-hidden border-r border-black"
 			>
 				<Marquee>
 					{#each counter as x}
-						<div>[MARQUEE] [MARQUEE]</div>
-						<div>[MARQUEE] [MARQUEE]</div>
+						<div class="px-8">Research Develop Deploy</div>
 					{/each}
 				</Marquee>
 			</div>
 			<a
 				href="/works"
-				class="flex items-center w-32 gap-1 pr-8 ml-auto min-w-32"
+				class="flex items-center justify-center w-32 gap-1 p-2 transition-all duration-300 hover:bg-black hover:text-white"
 			>
-				<span class="p-2 text-xl font-medium">MORE</span>
+				<span class="text-base font-medium">MORE</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
-					stroke-width="1.5"
+					stroke-width="2"
 					stroke="currentColor"
-					class="w-6 h-6"
+					class="w-4 h-4"
 				>
 					<path
 						stroke-linecap="round"
@@ -123,10 +125,18 @@
 	</div>
 	<div class="flex divide-x divide-black">
 		<div class="w-1/3 p-2">mail</div>
-		<div class="w-2/3 p-2 pr-8 text-right">sherwinchiaa@gmail.com</div>
+		<a
+			href="mailto:sherwinchiaa@gmail.com"
+			class="w-2/3 p-2 pr-8 text-right transition-all duration-300 hover:bg-black hover:text-white"
+			>sherwinchiaa@gmail.com</a
+		>
 	</div>
 	<div class="w-full overflow-hidden">
-		<img src="/images/sherwin.svg" alt="Sherwin" class="w-full scale-[1.01]" />
+		<img
+			src="/images/sherwin.svg"
+			alt="Sherwin"
+			class="w-full scale-[1.01] pr-4"
+		/>
 	</div>
 	<div class="flex p-1 pb-5 text-xs">2024 Sherwin Variancia</div>
 </div>
